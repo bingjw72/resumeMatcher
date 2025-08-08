@@ -2,6 +2,6 @@ streamlit
 pandas
 scikit-learn
 requests
-openai
+openai==0.28
 PyPDF2
 sentence_transformers

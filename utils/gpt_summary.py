@@ -15,7 +15,7 @@ def generate_candidate_summary(candidate_text, jd_text, similarity, name, model=
     - A concise overview of the candidate's background, total years of experience, and main areas of expertise.
     - Key strengths relevant to the job, such as overlapping skills, tools, and project experience.
     - Potential weaknesses or mismatches, such as lack of required experience, skill gaps, or inconsistent work history.
-    - A final reasoning based on the Cosine similarity score ({similarity:.4f}) to conclude how well this candidate fits the job. Please note it's hard to get a high score in this metric so please releaf the judgement standard.
+    - A final reasoning based on the Cosine similarity score ({similarity:.4f}) to conclude how well this candidate fits the job. Please note it's hard to get a high score in this metric so please releaf the judgement standard. Also, do not include the valus of similarity in the output.
 
     Do not repeat or paraphrase the job description. You may reference the job requirements only to assess fit, but focus your writing on the candidate.
     please don't pretend the candidate's sexual information. Please use words like "Candidate", first name to represent this candidate.

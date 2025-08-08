@@ -16,7 +16,7 @@ resume_files = st.file_uploader("Upload one or more PDF resumes", type=["pdf"], 
 
 # --- Step 3: Select Embedding Model ---
 st.subheader("Step 3: Choose Embedding Model")
-embedding_choice = st.radio("Which embedding model do you want to use?", ["local", "openai"])
+embedding_choice = st.radio("Which embedding model do you want to use?", ["OpenAI", "Local"])
 
 # --- Step 4: Run Matching ---
 if st.button("Run Matching"):
@@ -25,6 +25,10 @@ if st.button("Run Matching"):
     else:
         with st.spinner("Processing..."):
             results = []
+            if embedding_choice == "OpenAI":
+                modelchoice = "openai"
+            else:
+                modelchoice = "local"
             jd_embedding = get_text_embedding(jd_input, provider=embedding_choice)
 
             for file in resume_files:

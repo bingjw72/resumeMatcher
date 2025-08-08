@@ -1,5 +1,82 @@
 # Candidate Recommendation Engine
 
+This is a Streamlit-based intelligent web app that recommends top candidate resumes for a given job description based on semantic similarity.
+
+## 🔍 Features
+
+- Accepts a **job description** as text input
+- Supports uploading **multiple candidate resumes** in PDF format
+- Allows choosing between **OpenAI** and **local sentence-transformer** models for embedding
+- Computes **cosine similarity** between the JD and each resume
+- Displays only candidates with a similarity score > 0.2, showing the **Top 10 matches**
+- ✅ When using the **OpenAI embedding model**, the app automatically generates a detailed GPT-based **summary** explaining:
+  - The candidate’s experience and strengths
+  - Any potential weaknesses
+  - A final evaluation of fit, based on similarity score and resume content
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Streamlit
+- **Embedding**:
+  - Local: SentenceTransformers (`all-MiniLM-L6-v2`)
+  - OpenAI: `text-embedding-3-small`
+- **Resume Parsing**: PyPDF2
+- **Summarization**: GPT-4 via OpenAI ChatCompletion API
+
+## 🗂️ File Structure
+
+```text
+├── app_main_complete.py      # Main app with summarization support
+├── readpdf.py                # Resume text + ID extractor
+├── embedding_utils.py        # Embedding + cosine similarity functions
+├── structure_jd.py           # JD structuring (optional)
+├── requirements.txt          # Dependencies
+└── README.md                 # Project documentation
+```
+
+## 🚀 How to Run
+
+1. Clone this repository and install dependencies:
+
+```bash
+conda create -n recommender python=3.10
+conda activate recommender
+pip install -r requirements.txt
+```
+
+2. Set your OpenAI API key (if using OpenAI models):
+
+```bash
+export OPENAI_API_KEY=your-key-here
+```
+
+3. Start the app:
+
+```bash
+streamlit run app_main_complete.py
+```
+
+## ⚙️ Notes
+
+- **GPT-based summaries** are only generated when the "OpenAI" model is selected.
+- Local embedding mode will compute similarity but skip summarization.
+- Only resumes with **similarity ≥ 0.2** are considered.
+
+## 📌 To Do
+
+- Add `.docx` resume support
+- Allow downloading of match results
+- Enable custom similarity threshold from UI
+
+## 📄 License
+MIT License
+
+## 🙋‍♂️ Contact
+For questions or suggestions, feel free to open an issue or contact \[[bwang72@ur.rochester.edu](email)].
+
+
+<!-- # Candidate Recommendation Engine
+
 This is a Streamlit-based web application for matching candidate resumes against a job description using semantic similarity via text embeddings.
 
 ## 🔍 Features
@@ -82,4 +159,4 @@ MIT License
 
 ## 🙋‍♂️ Contact
 
-For questions or suggestions, feel free to open an issue or contact \[[bwang72@ur.rochester.edu](email)].
+For questions or suggestions, feel free to open an issue or contact \[[bwang72@ur.rochester.edu](email)]. -->

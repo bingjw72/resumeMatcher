@@ -18,7 +18,7 @@ def generate_candidate_summary(candidate_text, jd_text, similarity, name, model=
     - A final reasoning based on the Cosine similarity score ({similarity:.4f}) to conclude how well this candidate fits the job. Please note it's hard to get a high score in this metric so please releaf the judgement standard. Also, do not include the valus of similarity in the output.
 
     Do not repeat or paraphrase the job description. You may reference the job requirements only to assess fit, but focus your writing on the candidate.
-    please don't pretend the candidate's sexual information. Please use words like "Candidate", first name to represent this candidate.
+    please don't pretend the candidate's sexual information, Please use words like "Candidate", first name to represent this candidate. The candidate is one person so do not use words like they or their to call.
     The summary should no more than 100 words.
     Candidate's Full Name:
     {name}

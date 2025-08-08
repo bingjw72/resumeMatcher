@@ -1,5 +1,4 @@
 import streamlit as st
-import tempfile
 from utils.readpdf import extract_text_from_pdf, extract_candidate_id
 from utils.embedding_utils import get_text_embedding, compute_cosine_similarity
 from utils.gpt_summary import generate_candidate_summary
@@ -53,8 +52,7 @@ if st.button("Run Matching"):
                         "summary": summary
                     })
 
-            # Sort and filter top 10
-            sorted_results = sorted(results, key=lambda x: x["score"], reverse=True)[:10]
+            sorted_results = sorted(results, key=lambda x: x["score"], reverse=True)[:10] # Top 10
 
         # --- Step 5: Display ---
         st.subheader("Top Matches (Score > 0.2)")

@@ -4,7 +4,7 @@ from utils.readpdf import extract_text_from_pdf, extract_candidate_id
 from utils.embedding_utils import get_text_embedding, compute_cosine_similarity
 
 st.set_page_config(page_title="Candidate Recommender", layout="centered")
-st.title("🧠 Candidate Recommendation Engine")
+st.title("Candidate Recommendation Engine")
 
 # --- Step 1: Input JD ---
 st.subheader("Step 1: Paste Job Description")

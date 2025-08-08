@@ -2,6 +2,8 @@ import streamlit as st
 import tempfile
 from utils.readpdf import extract_text_from_pdf, extract_candidate_id
 from utils.embedding_utils import get_text_embedding, compute_cosine_similarity
+from utils.gpt_summary import generate_candidate_summary
+
 
 st.set_page_config(page_title="Candidate Recommender", layout="centered")
 st.title("Candidate Recommendation Engine")
@@ -39,9 +41,16 @@ if st.button("Run Matching"):
                 similarity = compute_cosine_similarity(jd_embedding, resume_embedding)
 
                 if similarity >= 0.2:
+                    summary = ""
+                    if modelchoice == "openai":
+                        try:
+                            summary = generate_candidate_summary(text, jd_input, similarity)
+                        except Exception as e:
+                            summary = f"Error generating summary: {str(e)}"
                     results.append({
                         "name": candidate_id,
-                        "score": round(similarity, 4)
+                        "score": round(similarity, 4),
+                        "summary": summary
                     })
 
             # Sort and filter top 10
@@ -54,5 +63,7 @@ if st.button("Run Matching"):
         else:
             for i, r in enumerate(sorted_results):
                 st.markdown(f"**{i+1}. {r['name']}** — Similarity: `{r['score']}`")
+                # if r.get("summary"):
+                #     st.markdown(f"Candidate Summary: {r['summary']}")
                 st.markdown("---")
 

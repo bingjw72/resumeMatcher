@@ -16,7 +16,7 @@ resume_files = st.file_uploader("Upload one or more PDF resumes", type=["pdf"], 
 
 # --- Step 3: Select Embedding Model ---
 st.subheader("Step 3: Choose Embedding Model")
-embedding_choice = st.radio("Which embedding model do you want to use?", ["OpenAI", "Local(Not recommanded)"])
+embedding_choice = st.radio("Which embedding model do you want to use?", ["OpenAI", "Local(Not recommended)"])
 
 # --- Step 4: Run Matching ---
 if st.button("Run Matching"):

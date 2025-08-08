@@ -44,7 +44,7 @@ if st.button("Run Matching"):
                     summary = ""
                     if modelchoice == "openai":
                         try:
-                            summary = generate_candidate_summary(text, jd_input, similarity)
+                            summary = generate_candidate_summary(text, jd_input, similarity, name=candidate_id)
                         except Exception as e:
                             summary = f"Error generating summary: {str(e)}"
                     results.append({
@@ -63,7 +63,7 @@ if st.button("Run Matching"):
         else:
             for i, r in enumerate(sorted_results):
                 st.markdown(f"**{i+1}. {r['name']}** — Similarity: `{r['score']}`")
-                # if r.get("summary"):
-                #     st.markdown(f"Candidate Summary: {r['summary']}")
+                if r.get("summary"):
+                    st.markdown(f"Candidate Summary: {r['summary']}")
                 st.markdown("---")
 
